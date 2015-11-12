@@ -1,0 +1,26 @@
+
+<div>
+  <a href="#/">Home</a>
+</div>
+
+<div class="add">
+  <h1>Create your Get Heard Profile</h1>
+  <form ng-submit="addUser(user)">
+    <input place holder=" &#xf0e0; Your Email" ng-model="user.email">
+   <input place holder=" &#xf007; Your Username" ng-model="user.username">
+   <input place holder=" &#xf023; Create Password" ng-model="user.password">
+   <input place holder=" &#xf007; Full Name" ng-model="user.fullname">
+   <input place holder=" &#xf124; City, State" ng-model="user.location">
+   <button class="create">Create</button>
+  </form>
+  <div class="dis">
+    <p class="claimer">
+      By creating a profile, you agree to our terms of service and privacy policy.
+    </p>
+  </div>
+  <div class="skip">
+    <p class="already">
+      Already have an account? <a class="old" href="">Log in</a>
+    </p>
+  </div>
+</div>
