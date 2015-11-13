@@ -1,6 +1,102 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var config = function config($stateProvider, $urlRouterProvider) {
+
+  $urlRouterProvider.otherwise('/');
+
+  $stateProvider.state('root', {
+    abstract: true,
+    templateUrl: 'templates/layout.tpl.html'
+  }).state('root.home', {
+    url: '/',
+    controller: 'HomeController',
+    templateUrl: 'templates/home.tpl.html'
+  }).state('root.signUp', {
+    url: '/signUp',
+    controller: "SignupController",
+    templateUrl: 'templates/signUp.tpl.html'
+  }).state('root.genre', {
+    url: '/genre',
+    templateUrl: 'templates/genre.tpl.html'
+  }).state('root.login', {
+    url: '/login',
+    templateUrl: 'templates/login.tpl.html'
+  }).state('root.dashboard', {
+    url: '/dashboard',
+    templateUrl: 'templates/dashboard.tpl.html'
+  }).state('root.profile', {
+    url: '/profile',
+    templateUrl: 'templates/profile.tpl.html'
+  });
+};
+
+config.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+exports['default'] = config;
+module.exports = exports['default'];
+
+},{}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var HomeController = function HomeController($scope, $http, PARSE) {};
+
+HomeController.$inject = ['$scope', '$http', 'PARSE'];
+
+exports['default'] = HomeController;
+module.exports = exports['default'];
+
+},{}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var ProfileController = function ProfileController($scope, $stateParams, UserService, $state) {
+
+  UserService.getUser($stateParams.userId).then(function (res) {
+    $scope.singleUser = res.data;
+  });
+
+  $scope.deleteMe = function (obj) {
+    UserService['delete'](obj).then(function (res) {
+      $state.go('root.home');
+    });
+  };
+};
+ProfileController.$inject = ['$scope', '$stateParams', 'UserService', '$state'];
+exports['default'] = ProfileController;
+module.exports = exports['default'];
+
+},{}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var SignUpController = function SignUpController($scope, UserService) {
+
+  $scope.addUser = function (obj) {
+    UserService.addUser(obj).then(function (res) {
+      $scope.user = {};
+    });
+  };
+};
+
+SignUpController.$inject = ['$scope', 'UserService'];
+
+exports['default'] = SignUpController;
+module.exports = exports['default'];
+
+},{}],5:[function(require,module,exports){
+'use strict';
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _angular = require('angular');
@@ -9,9 +105,99 @@ var _angular2 = _interopRequireDefault(_angular);
 
 require('angular-ui-router');
 
-_angular2['default'].module('app', ['ui.router']);
+var _config = require('./config');
 
-},{"angular":4,"angular-ui-router":2}],2:[function(require,module,exports){
+var _config2 = _interopRequireDefault(_config);
+
+var _controllersSignUp = require('./controllers/signUp');
+
+var _controllersSignUp2 = _interopRequireDefault(_controllersSignUp);
+
+var _controllersHome = require('./controllers/home');
+
+var _controllersHome2 = _interopRequireDefault(_controllersHome);
+
+var _controllersProfile = require('./controllers/profile');
+
+var _controllersProfile2 = _interopRequireDefault(_controllersProfile);
+
+var _servicesUser = require('./services/user');
+
+var _servicesUser2 = _interopRequireDefault(_servicesUser);
+
+_angular2['default'].module('app', ['ui.router']).constant('PARSE', {
+  URL: 'https://api.parse.com/1/',
+  CONFIG: {
+    headers: {
+      'X-Parse-Application-Id': 'KZubsuaEP5mWngRddElnioU22ok9OskFZazZsHeu',
+      'X-Parse-REST-API-Key': 'lHBHuvBoNoPpDNxNgHg5Akjey5zLNJswmL7wgAI8'
+    }
+  }
+}).config(_config2['default']).controller('HomeController', _controllersHome2['default']).controller('SignUpController', _controllersSignUp2['default']).controller('ProfileController', _controllersProfile2['default']).service('UserService', _servicesUser2['default']);
+
+},{"./config":1,"./controllers/home":2,"./controllers/profile":3,"./controllers/signUp":4,"./services/user":6,"angular":9,"angular-ui-router":7}],6:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var UserService = function UserService($http, PARSE) {
+
+  var url = PARSE.URL + 'classes/getheard';
+
+  var checkAuth = function checkAuth() {
+    return true;
+  };
+
+  this.getUser = function () {
+    if (checkAuth()) {
+      return $http({
+        url: url,
+        headers: PARSE.CONFIG.headers,
+        method: 'GET',
+        cache: true
+      });
+    }
+  };
+  this.getUser = function (userId) {
+    if (checkAuth()) {
+      return $http({
+        method: 'GET',
+        url: url + '/' + userId,
+        headers: PARSE.CONFIG.headers,
+        cache: true
+      });
+    }
+  };
+
+  var User = function User(obj) {
+    this.fullname = obj.fullname;
+    this.email = obj.email;
+    this.password = obj.password;
+    this.location = obj.location;
+    this.username = obj.username;
+  };
+
+  this.addUser = function (obj) {
+    var u = new User(obj);
+    return $http.post(url, u, PARSE.CONFIG);
+  };
+
+  this.update = function (obj) {
+    return $http.put(url, +'/' + obj.object.Id, PARSE.CONFIG);
+  };
+
+  this['delete'] = function (obj) {
+    return $http['delete'](url + '/' + obj.objectId, PARSE.CONFIG);
+  };
+};
+
+UserService.$inject = [''];
+
+exports['default'] = UserService;
+module.exports = exports['default'];
+
+},{}],7:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4382,7 +4568,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],3:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33287,11 +33473,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],4:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":3}]},{},[1])
+},{"./angular":8}]},{},[5])
 
 
 //# sourceMappingURL=main.js.map

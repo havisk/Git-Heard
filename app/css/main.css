@@ -8411,7 +8411,26 @@ body {
   background: #e2ebf3; }
 
 .container {
-  width: 800px;
+  width: 1200px;
   margin: 20px auto; }
+
+h1 {
+  margin: 24px; }
+
+.add, .log {
+  text-align: center;
+  width: 800px;
+  margin: 20px auto;
+  border: 1px solid black;
+  background-color: white; }
+
+.add2, .log2 {
+  margin-left: 25%;
+  width: 389px;
+  text-align: left; }
+
+.create {
+  width: 393px;
+  height: 43px; }
 
 /*# sourceMappingURL=main.css.map */
