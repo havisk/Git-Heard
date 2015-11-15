@@ -5,9 +5,35 @@
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body>
+<body class="bod" ng-style="{'background-color': blueColor()}">
   <div ui-view></div>
   
+ 
   <script src="js/main.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    var header = $('body');
+
+    var backgrounds = new Array(
+        'url(images/dija.jpg)' 
+      , 'url(images/onyx.jpg)'
+      , 'url(images/voice.jpg)'
+      , 'url(images/Speer.jpg)'
+  );
+
+    var current = 0;
+
+    function nextBackground() {
+        current++;
+        current = current % backgrounds.length;
+        header.css('background-image', backgrounds[current]);
+    }
+    setInterval(nextBackground, 10000);
+
+    header.css('background-image', backgrounds[0]);
+  });
+
+</script>
 </body>
 </html>

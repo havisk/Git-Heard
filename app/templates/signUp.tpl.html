@@ -1,17 +1,28 @@
 
-<div>
-  <a href="#/">Home</a>
-</div>
+<div class="hop">
+  <nav class="top-bar" data-topbar role="navigation">
+    <section class="top-bar-section" >
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="">SIGN UP</a></h1>
+        </li>
+      </ul>
+      <ul class="right">
+       <li><a href="#/home">HOME</a></li>
+      </ul>
+    </section>
+  </nav>
+
 
 <div class="add">
   <h1>Create your Get Heard Profile</h1>
   <div class="add2">
     <form ng-submit="addUser(user)">
-      <input placeholder="  Your Email" ng-model="user.email">
-      <input placeholder="Your Username" ng-model=" user.username">
-      <input placeholder="Create Password" ng-model="user.password">
-      <input placeholder="Full Name" ng-model="user.fullname">
-      <input placeholder="City, State" ng-model="user.location">
+      <input placeholder="  Your Email" type="text" ng-model="user.email">
+      <input placeholder="Your Username" type="text" ng-model=" user.username">
+      <input placeholder="Create Password" type="password" ng-model="user.password">
+      <input placeholder="Full Name" type="text" ng-model="user.fullname">
+      <input placeholder="City, State" type="text" ng-model="user.location">
       <button class="create">Create</button>
     </form>
     <div class="dis">
@@ -21,12 +32,12 @@
     </div>
     <div class="skip">
       <p class="already">
-        Already have an account? <a class="old" href="">Log in</a>
+        Already have an account? <a class="old" href="#/login">Log in</a>
       </p>
     </div>
   </div>
 
 </div>
-
+</div>
 
 

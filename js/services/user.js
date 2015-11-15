@@ -1,6 +1,7 @@
 let UserService = function($http, PARSE) {
 
   let url = PARSE.URL + 'classes/getheard';
+  let url2 = PARSE.URL + 'users';
 
   let checkAuth = function () {
     return true;
@@ -37,7 +38,7 @@ let UserService = function($http, PARSE) {
 
   this.addUser = function(obj) {
     let u = new User(obj);
-    return $http.post(url, u, PARSE.CONFIG);
+    return $http.post(url2, u, PARSE.CONFIG);
   };
 
   this.update = function(obj) {
@@ -50,6 +51,6 @@ let UserService = function($http, PARSE) {
 
 };
 
-UserService.$inject = [''];
+UserService.$inject = ['$http', 'PARSE'];
 
 export default UserService;

@@ -1,0 +1,29 @@
+<div class="blue">
+   <nav class="top-bar genre" data-topbar role="navigation">
+      <section class="top-bar-section">
+      <ul class="title-area">
+            <li class="name">
+              <h1><a href="">ADDSONG</a></h1>
+            </li>
+          </ul>
+        <ul class="title-area right">
+          <li><a href="#/home">HOME</a></li>
+          <li><a href="'#/home">LOGOUT</a></li>
+        </ul>
+      </section>
+      </nav> 
+      <div class="up">
+        <div class="ups">
+          <form ng-submit="uploadFile()">
+            <ul>
+              <li>
+                <label>Album Thumbnail: <input type="file" name="albumpic" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+              </label></li>
+            <input type="file" name="song" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+            </ul>
+             <button  ng-click="uploadFile()">Submit</button>
+          </form>
+        </div>
+      </div>
+  </div>
+    

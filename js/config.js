@@ -35,6 +35,45 @@ let config = function(
       url: '/profile',
       templateUrl: 'templates/profile.tpl.html'
     })
+    .state('root.addsong', {
+      url: '/addsong',
+      controller: 'AddSongController',
+      templateUrl: 'templates/addSong.tpl.html'
+    })
+    .state('root.single', {
+      url: '/single',
+      controller: 'SingleController',
+      templateUrl: 'templates/single.tpl.html'
+    })
+    .state('root.about', {
+      url: '/about',
+      templateUrl: 'templates/about.tpl.html'
+    })
+    .state('root.contact', {
+      url: '/contact',
+      templateUrl: 'templates/contact.tpl.html'
+    })
+    .state('root.hiphop', {
+      url: '/hiphop',
+      controller: 'HipHopController',
+      templateUrl: 'templates/hiphop.tpl.html'
+    })
+    .state('root.pop', {
+      url: '/pop',
+      controller: 'PopController',
+      templateUrl: 'templates/pop.tpl.html'
+    })
+    .state('root.rock', {
+      url: '/rock',
+      controller: 'RockController',
+      templateUrl: 'templates/Rock.tpl.html'
+    })
+    .state('root.rnb', {
+      url: '/rnb',
+      controller: 'RNBController',
+      templateUrl: 'templates/rnb.tpl.html'
+    })
+
 
 
 };

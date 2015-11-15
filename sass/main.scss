@@ -4,13 +4,19 @@
 @import 'font-awesome';
 
 body {
-  background: #e2ebf3;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.container {
-  width: 1200px;
-  margin: 20px auto;
-}
+// #body{
+//   width: 1200px;
+//   margin: 20px auto;
+// }
+
+// .container {
+//   width: 1200px;
+//   margin: 20px auto;
+// }
 
 h1{
   margin: 24px;
@@ -34,5 +40,100 @@ h1{
   width: 393px;
   height: 43px;
 }
+
+.read{
+  color: white;
+  text-shadow: black 2px 2px 2px;
+}
+
+.pot{
+  position: relative;
+  top: 161px;
+  left: 270px;
+}
+
+.do{
+  position: relative;
+  top: 130px;
+  left: 530px;
+}
+
+.art{
+  position: relative;
+  top: 130px;
+  left: 630px;
+}
+
+.bat{
+  position: relative;
+  top: 140px;
+  left: 570px;
+}
+
+
+.tip p{
+  color: white;
+  text-align: center;
+  text-shadow: black 2px 2px 2px;
+  font-size: 7em;
+}
+.red {
+  background-color: red;
+  height: 900px;
+  overflow: hidden;
+}
+
+.blue {
+  background-color: darkblue;
+  height: 900px;
+}
+.up {
+  background-color: white;
+  width: 300px;
+  margin-left: 40%;
+}
+.gray{
+  background-color:  slategray;
+  height: 900px;
+}
+.hop{
+  background-color: #00445A;
+  height: 900px;
+}
+.login{
+  background-color: #0B0D0E;
+  height: 900px;
+}
+.size{
+  background-color: #154402;
+  height: 900px;
+}
+.what{
+  background-color:#973900;
+  height: 900px;
+}
+.gup{
+  width: 500px;
+  background-color: white;
+  margin-left: 35%;
+}
+.dash{
+  background-color: #54008E;
+  height: 900px;
+}
+
+.genre2{
+  background-color: white;
+  height: 900px;
+}
+// .mart li, a{
+// //   font-size: 1.5em;
+//   color: white;
+// //   margin-left: 27%;
+// //   list-style: none;
+//   text-shadow: black 2px 2px 2px;
+// }
+
+
 
 

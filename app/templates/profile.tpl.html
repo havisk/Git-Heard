@@ -1,20 +1,29 @@
-<nav class="top-bar genre" data-topbar role="navigation">
-  <section class="top-bar-section">
-    <ul class="title-area right">
-      <li><a href="#/home">HOME</a></li>
-      <li><a href="'#/home">LOGOUT</a></li>
-    </ul>
-  </section> 
-</nav>
-<div>
-  <div>
-    <form ng-submit="updateUser(singleUser)">
-      <input placeholder="Your Email" ng-model="user.email">
-      <input placeholder="Your Username" ng-model=" user.username">
-      <input placeholder="Create Password" ng-model="user.password">
-      <input placeholder="Full Name" ng-model="user.fullname">
-      <input placeholder="City, State" ng-model="user.location">
-      <button>Update</button>
-    </form>
+<div class="what">
+  <div class="size">
+    <nav class="top-bar genre" data-topbar role="navigation">
+      <section class="top-bar-section">
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="">PROFILE</a></h1>
+          </li>
+        </ul>
+        <ul class="title-area right">
+          <li><a href="#/home">HOME</a></li>
+          <li><a href="'#/home">LOGOUT</a></li>
+        </ul>
+      </section> 
+    </nav>
+    <div>
+      <div class="gup">
+        <form ng-submit="updateUser(singleUser)">
+          <input placeholder="Your Email" ng-model="user.email">
+          <input placeholder="Your Username" ng-model=" user.username">
+          <input placeholder="Create Password" ng-model="user.password">
+          <input placeholder="Full Name" ng-model="user.fullname">
+          <input placeholder="City, State" ng-model="user.location">
+          <button>Update</button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
