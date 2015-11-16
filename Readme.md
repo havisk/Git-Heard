@@ -1,6 +1,9 @@
 ## Welcome to My Project
 
-> I am your Readme.md file, you should probably update me.
+This project is for aspiring artist singers or producers.  the user will create a user account
+and upload there music to their personal page.  Users will be able to search different genres to listen to other users music.
+
+
 
 
 ## Usage
